@@ -1,0 +1,38 @@
+openapi: 3.0.2
+info:
+  title: Rust kuji API
+  version: 0.0.0
+servers:
+  - url: http://rust.lxc:8080
+paths:
+  /hello:
+    get:
+      summary: サンプルのエンドポイント
+      responses:
+        200:
+          description: Hello world! という文字列が返されます
+          content:
+            application/json:
+              schema:
+                type: string
+  /kuji:
+    post:
+      summary: くじびきします
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                names:
+                  type: array
+                  items:
+                    type: string
+        required: true
+      responses:
+        200:
+          description: くじびきしました。
+          content:
+            application/json:
+              schema:
+                type: string
